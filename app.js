@@ -17,12 +17,18 @@ class CountdownTimer {
       this.startTime = Date.now();
       this.deltaTime = this.targetDate.getTime() - this.startTime;
 
-      this.days = Math.floor(this.deltaTime / (1000 * 60 * 60 * 24));
-      this.hours = Math.floor(
-        (this.deltaTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      this.mins = Math.floor((this.deltaTime % (1000 * 60 * 60)) / (1000 * 60));
-      this.secs = Math.floor((this.deltaTime % (1000 * 60)) / 1000);
+      this.days = String(
+        Math.floor(this.deltaTime / (1000 * 60 * 60 * 24))
+      ).padStart(2, "0");
+      this.hours = String(
+        Math.floor((this.deltaTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      ).padStart(2, "0");
+      this.mins = String(
+        Math.floor((this.deltaTime % (1000 * 60 * 60)) / (1000 * 60))
+      ).padStart(2, "0");
+      this.secs = String(
+        Math.floor((this.deltaTime % (1000 * 60)) / 1000)
+      ).padStart(2, "0");
 
       this.refs.fieldDays.textContent = this.days;
       this.refs.fieldHours.textContent = this.hours;
